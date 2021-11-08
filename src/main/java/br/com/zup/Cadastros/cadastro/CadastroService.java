@@ -8,24 +8,22 @@ public class CadastroService {
     @Autowired
     private CadastroRepository cadastroRepository;
 
-    public void realizarCadastro(Cadastro cadastro) {
-        cadastroRepository.save(cadastrarPessoa(cadastro));
+    public void realizarCadastro(CadastroDTO cadastroDTO) {
+        cadastroRepository.save(cadastrarPessoa(cadastroDTO));
     }
 
-    public Cadastro cadastrarPessoa(Cadastro cadastro) {
+    public Cadastro cadastrarPessoa(CadastroDTO cadastroDTO) {
         Cadastro cadastro1 = new Cadastro();
 
-        cadastro1.setCpf(cadastro.getCpf());
-        cadastro1.setNome(cadastro.getNome());
-        cadastro1.setSobrenome(cadastro.getSobrenome());
-        cadastro1.setCidade(cadastro.getCidade());
-        cadastro1.setBairro(cadastro.getBairro());
-        cadastro1.setNomeDoParenteProximo(cadastro.getNomeDoParenteProximo());
-        cadastro1.setMoraSozinho(cadastro.isMoraSozinho());
-        cadastro1.setTemPet(cadastro.isTemPet());
-        cadastro1.setIdade(cadastro.getIdade());
-
-        cadastroRepository.save(cadastro);
+        cadastro1.setCpf(cadastroDTO.getCpf());
+        cadastro1.setNome(cadastroDTO.getNome());
+        cadastro1.setSobrenome(cadastroDTO.getSobrenome());
+        cadastro1.setCidade(cadastroDTO.getCidade());
+        cadastro1.setBairro(cadastroDTO.getBairro());
+        cadastro1.setNomeDoParenteProximo(cadastroDTO.getNomeDoParenteProximo());
+        cadastro1.setMoraSozinho(cadastroDTO.isMoraSozinho());
+        cadastro1.setTemPet(cadastroDTO.isTemPet());
+        cadastro1.setIdade(cadastroDTO.getIdade());
 
         return cadastro1;
     }
