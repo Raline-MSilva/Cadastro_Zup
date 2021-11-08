@@ -3,6 +3,8 @@ package br.com.zup.Cadastros.cadastro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 @Service
 public class CadastroService {
     @Autowired
@@ -13,6 +15,7 @@ public class CadastroService {
     }
 
     public Cadastro cadastrarPessoa(CadastroDTO cadastroDTO) {
+        LocalDate dataAtual = LocalDate.now();
         Cadastro cadastro1 = new Cadastro();
 
         cadastro1.setCpf(cadastroDTO.getCpf());
@@ -24,6 +27,7 @@ public class CadastroService {
         cadastro1.setMoraSozinho(cadastroDTO.isMoraSozinho());
         cadastro1.setTemPet(cadastroDTO.isTemPet());
         cadastro1.setIdade(cadastroDTO.getIdade());
+        cadastro1.setDataDoCadastro(LocalDate.now());
 
         return cadastro1;
     }
