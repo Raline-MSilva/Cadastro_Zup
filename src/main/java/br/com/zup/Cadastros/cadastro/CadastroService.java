@@ -8,6 +8,10 @@ public class CadastroService {
     @Autowired
     private CadastroRepository cadastroRepository;
 
+    public void realizarCadastro(Cadastro cadastro) {
+        cadastroRepository.save(cadastrarPessoa(cadastro));
+    }
+
     public Cadastro cadastrarPessoa(Cadastro cadastro) {
         Cadastro cadastro1 = new Cadastro();
 
