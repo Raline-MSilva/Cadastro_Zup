@@ -8,7 +8,7 @@ public class CadastroService {
     @Autowired
     private CadastroRepository cadastroRepository;
 
-    public void cadastrarPessoa(Cadastro cadastro) {
+    public Cadastro cadastrarPessoa(Cadastro cadastro) {
         Cadastro cadastro1 = new Cadastro();
 
         cadastro1.setCpf(cadastro.getCpf());
@@ -20,6 +20,9 @@ public class CadastroService {
         cadastro1.setMoraSozinho(cadastro.isMoraSozinho());
         cadastro1.setTemPet(cadastro.isTemPet());
         cadastro1.setIdade(cadastro.getIdade());
+
         cadastroRepository.save(cadastro);
+
+        return cadastro1;
     }
 }
