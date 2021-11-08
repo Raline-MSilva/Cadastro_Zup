@@ -32,5 +32,9 @@ public class CadastroService {
 
         return cadastro1;
     }
+    public List<Cadastro>mostrarTodosOsCadastros (){
+        Iterable<Cadastro> cadastros = cadastroRepository.findAll();
+        return (List<Cadastro>) cadastros;
+    }
 
 }
