@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/cadastros")
@@ -25,13 +25,19 @@ public class CadastroController {
     }
 
     @GetMapping
-    public List<ResumoDTO> mostrarTodosOsCadastros() {
+    public List<ResumoDTO> mostrarTodosOsCadastros(@RequestParam Optional<Boolean> moraSozinho) {
         List<ResumoDTO> todosOsCadastros = new ArrayList<>();
 
         for (Cadastro cadastro : cadastroService.mostrarTodosOsCadastros()) {
             todosOsCadastros.add(new ResumoDTO(cadastro.getCpf(), cadastro.getNome(), cadastro.getSobrenome()));
         }
+
+        for (Cadastro cadastro : cadastroService.mostrarQuemMoraSozinho(moraSozinho.get())) {
+            todosOsCadastros.add(new ResumoDTO(cadastro.getCpf(), cadastro.getNome(), cadastro.getSobrenome()));
+        }
+
         return todosOsCadastros;
+
     }
 
 
@@ -44,4 +50,4 @@ public class CadastroController {
      todo 4 - faça um metodo que retorna TODOS os dados de um usuario pesquisado pelo ID.
      */
 
-}
+    }
