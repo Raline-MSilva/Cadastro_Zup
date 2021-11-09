@@ -1,5 +1,6 @@
 package br.com.zup.Cadastros.cadastro;
 
+import br.com.zup.Cadastros.cadastro.exceptions.CadastroNaoExisteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,4 +48,11 @@ public class CadastroService {
         return (List<Cadastro>) cadastros;
     }
 
+    public void deletarPorCpf (String cpf){
+        if (cadastroRepository.existsById(cpf)){
+            cadastroRepository.deleteById(cpf);
+        } else {
+            throw new CadastroNaoExisteException("Nao existe esse cadastro");
+        }
+    }
 }
