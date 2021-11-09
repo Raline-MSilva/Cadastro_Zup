@@ -25,16 +25,10 @@ public class CadastroController {
     }
 
     @GetMapping
-    public List<ResumoDTO> mostrarTodosOsCadastros(@RequestParam Optional<Boolean> moraSozinho) {
+    public List<ResumoDTO> mostrarTodosOsCadastros(@RequestParam (required=false) boolean moraSozinho) {
         List<ResumoDTO> todosOsCadastros = new ArrayList<>();
 
-        /*for (Cadastro cadastro : cadastroService.mostrarTodosOsCadastros()) {
-            todosOsCadastros.add(new ResumoDTO(cadastro.getCpf(), cadastro.getNome(), cadastro.getSobrenome()));
-        }
-
-         */
-
-        for (Cadastro cadastro : cadastroService.mostrarQuemMoraSozinho(moraSozinho.get())) {
+        for (Cadastro cadastro : cadastroService.mostrarQuemMoraSozinho(moraSozinho)) {
             todosOsCadastros.add(new ResumoDTO(cadastro.getCpf(), cadastro.getNome(), cadastro.getSobrenome()));
         }
 
@@ -52,4 +46,4 @@ public class CadastroController {
      todo 4 - faça um metodo que retorna TODOS os dados de um usuario pesquisado pelo ID.
      */
 
-    }
+}
