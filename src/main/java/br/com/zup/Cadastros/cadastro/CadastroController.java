@@ -25,7 +25,7 @@ public class CadastroController {
     }
 
     @GetMapping
-    public List<ResumoDTO> mostrarTodosOsCadastros(@RequestParam (required=false) Boolean moraSozinho) {
+    public List<ResumoDTO> mostrarTodosOsCadastros(@RequestParam (required = false) Boolean moraSozinho) {
         List<ResumoDTO> todosOsCadastros = new ArrayList<>();
 
         for (Cadastro cadastro : cadastroService.mostrarQuemMoraSozinho(moraSozinho)) {
