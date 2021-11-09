@@ -25,10 +25,12 @@ public class CadastroController {
     }
 
     @GetMapping
-    public List<ResumoDTO> mostrarTodosOsCadastros(@RequestParam (required = false) Boolean moraSozinho) {
+    public List<ResumoDTO> mostrarTodosOsCadastros(@RequestParam (required = false) Boolean moraSozinho,
+                                                   @RequestParam (required = false) Boolean temPet,
+                                                   @RequestParam (required = false) Integer idade) {
         List<ResumoDTO> todosOsCadastros = new ArrayList<>();
 
-        for (Cadastro cadastro : cadastroService.mostrarQuemMoraSozinho(moraSozinho)) {
+        for (Cadastro cadastro : cadastroService.mostrarCadastrosEspecificos(moraSozinho, temPet, idade)) {
             todosOsCadastros.add(new ResumoDTO(cadastro.getCpf(), cadastro.getNome(), cadastro.getSobrenome()));
         }
 

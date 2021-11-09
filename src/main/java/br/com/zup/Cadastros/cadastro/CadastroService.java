@@ -33,9 +33,15 @@ public class CadastroService {
         return cadastro1;
     }
 
-    public List<Cadastro>mostrarQuemMoraSozinho (Boolean moraSozinho){
+    public List<Cadastro> mostrarCadastrosEspecificos(Boolean moraSozinho, Boolean temPet, Integer idade){
         if (moraSozinho != null){
             return cadastroRepository.findAllByMoraSozinho(moraSozinho);
+        }
+        else if (temPet != null){
+            return cadastroRepository.findAllByTemPet(temPet);
+        }
+        else if (idade != null){
+            return cadastroRepository.findAllByIdade(idade);
         }
         Iterable<Cadastro> cadastros = cadastroRepository.findAll();
         return (List<Cadastro>) cadastros;
