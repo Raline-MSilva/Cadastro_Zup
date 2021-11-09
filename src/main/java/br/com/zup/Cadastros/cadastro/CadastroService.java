@@ -37,8 +37,11 @@ public class CadastroService {
         return (List<Cadastro>) cadastros;
     }
 
-    public List<Cadastro>mostrarQuemMoraSozinho (boolean moraSozinho){
-        Iterable<Cadastro> cadastros = cadastroRepository.findAllByMoraSozinho(moraSozinho);
+    public List<Cadastro>mostrarQuemMoraSozinho (Boolean moraSozinho){
+        if (moraSozinho != null){
+            cadastroRepository.findAllByMoraSozinho(moraSozinho);
+        }
+        Iterable<Cadastro> cadastros = cadastroRepository.findAll();
         return (List<Cadastro>) cadastros;
     }
 
