@@ -28,9 +28,11 @@ public class CadastroController {
     public List<ResumoDTO> mostrarTodosOsCadastros(@RequestParam Optional<Boolean> moraSozinho) {
         List<ResumoDTO> todosOsCadastros = new ArrayList<>();
 
-        for (Cadastro cadastro : cadastroService.mostrarTodosOsCadastros()) {
+        /*for (Cadastro cadastro : cadastroService.mostrarTodosOsCadastros()) {
             todosOsCadastros.add(new ResumoDTO(cadastro.getCpf(), cadastro.getNome(), cadastro.getSobrenome()));
         }
+
+         */
 
         for (Cadastro cadastro : cadastroService.mostrarQuemMoraSozinho(moraSozinho.get())) {
             todosOsCadastros.add(new ResumoDTO(cadastro.getCpf(), cadastro.getNome(), cadastro.getSobrenome()));
