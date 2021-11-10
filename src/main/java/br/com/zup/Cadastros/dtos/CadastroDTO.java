@@ -1,4 +1,4 @@
-package br.com.zup.Cadastros.cadastro;
+package br.com.zup.Cadastros.dtos;
 
 import java.time.LocalDate;
 
